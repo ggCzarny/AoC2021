@@ -94,8 +94,3 @@ print(pierwsza[0].wyniki)
 print(pierwsza[0].plansza)
 
 print(Suma*Ostatnia)
-
-"""""
-
-
-"""""
