@@ -17,7 +17,7 @@ class VentLines:
         if x1 == x2:
             for i in range(max([y1, y2]) - min([y1, y2]) + 1):
                 x = x1
-                y = min([y1, y2])+i
+                y = min([y1,+i])
                 cords.append((x, y))
         if y1 == y2:
             for i in range(max([x1, x2]) - min([x1, x2]) + 1):
@@ -29,8 +29,17 @@ class VentLines:
 
 with open('Day5/inputExe.txt', 'r') as f:
     lines = [line for line in f.readlines() if line != "\n"]
+    list_of_cords = []
+    more_than_two =[]
     print(VentLines(lines).values)
     for vent_line in VentLines(lines).values:
-        print(VentLines.get_points_of_line(vent_line))
+        list_of_cords = list_of_cords + VentLines.get_points_of_line(vent_line)
+    print(list_of_cords)
+    for cord in list_of_cords:
+        if list_of_cords.count(cord) >= 2:
+            more_than_two.append(cord)
+    more_than_two = list(dict.fromkeys(more_than_two))
+    print(len(more_than_two))
+
 
 
