@@ -26,20 +26,32 @@ class VentLines:
                 cords.append((x, y))
         return cords
 
+class OceanMap:
+    def __init__(self, lines):
+        self.value = []
+        all_x = []
+        all_y = []
+        for value in VentLines(lines).values:
+            all_x.append(value[0])
+            all_x.append(value[2])
+            all_y.append(value[1])
+            all_y.append(value[3])
+        self.size_x = max(all_x)
+        self.size_y = max(all_y)
+        for i in range(self.size_x):
+            for j in range(self.size_y):
+                self.value[i][j] = 0
 
-with open('Day5/inputExe.txt', 'r') as f:
+
+
+
+
+
+with open('Day5/input.txt', 'r') as f:
     lines = [line for line in f.readlines() if line != "\n"]
-    list_of_cords = []
-    more_than_two =[]
-    print(VentLines(lines).values)
-    for vent_line in VentLines(lines).values:
-        list_of_cords = list_of_cords + VentLines.get_points_of_line(vent_line)
-    print(list_of_cords)
-    for cord in list_of_cords:
-        if list_of_cords.count(cord) >= 2:
-            more_than_two.append(cord)
-    more_than_two = list(dict.fromkeys(more_than_two))
-    print(len(more_than_two))
+    x = OceanMap(lines).value
+    print(x)
+
 
 
 
