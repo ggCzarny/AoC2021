@@ -1,9 +1,26 @@
-lst = [("aaaa8"),("bb8"),("ccc8"),("dddddd8")]
-#print([s.strip('8') for s in lst]) # remove the 8 from the string borders
-#print([s.replace('8', '') for s in lst]) # remove all the 8s 
 
-lines = []
-with open('Day3.txt', 'r') as l:
-    lines = l.readlines()
+value = []
+size_y = 5
+size_x = 5
 
-lines = s.replace('\n', '') for s in lines
+for i in range(size_x):
+    row = []
+    for j in range(size_y):
+        row.append(0)
+    value.append(row)
+
+
+
+def create_map(cords, map):
+    for cord in cords:
+        #map[cord[0], cord[1]] += 1
+        map[cord[0]][cord[1]] += 1
+        print(map[0][0])
+
+
+cords = [(1, 3), (2, 4), (1, 3)]
+
+result = create_map(cords, value)
+
+for x in value:
+    print(x)
