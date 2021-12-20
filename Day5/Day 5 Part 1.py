@@ -19,7 +19,7 @@ class VentLines:
             if x1 == x2:
                 for i in range(max([y1, y2]) - min([y1, y2]) + 1):
                     x = x1
-                    y = min([y1,+i])
+                    y = min([y1,y2])+i
                     cords.append((x, y))
             if y1 == y2:
                 for i in range(max([x1, x2]) - min([x1, x2]) + 1):
@@ -40,8 +40,6 @@ class OceanMap:
             all_y.append(value[3])
         self.size_x = max(all_x)
         self.size_y = max(all_y)
-        print(self.size_x)
-        print(self.size_y)
         for i in range(self.size_y+1):
             self.row = []
             for j in range(self.size_x+1):
@@ -56,11 +54,12 @@ class OceanMap:
         return result
 
 
-with open('Day5/inputExe.txt', 'r') as f:
+with open('Day5/input.txt', 'r') as f:
     lines = [line for line in f.readlines() if line != "\n"]
     result = OceanMap(lines).create_map(VentLines(lines).get_points_of_line())
     for line in result:
         print(line)
+
 
 
 
