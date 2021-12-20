@@ -6,7 +6,7 @@ class VentLines:
             line = line.replace('\n', '')
             line = line.replace(' -> ', ',')
             line_values = [int(number) for number in line.split(',')  if number != "\n" and number != ""]
-            if line_values[0] == line_values[2] or line_values[1] == line_values[3]: self.values.append(line_values)
+            if True: self.values.append(line_values)
     
     def get_points_of_line(self):
         cords = []
@@ -21,11 +21,24 @@ class VentLines:
                     x = x1
                     y = min([y1,y2])+i
                     cords.append((x, y))
-            if y1 == y2:
+            elif y1 == y2:
                 for i in range(max([x1, x2]) - min([x1, x2]) + 1):
                     y = y1
                     x = min([x1,x2])+i
                     cords.append((x, y))
+            #dodatek dla części drugiej \/
+            elif x1 != x2 or y1 != y2:
+                for i in range(max([x1, x2]) - min([x1, x2]) + 1):
+                    if x2 > x1:
+                        x = x1+i
+                    else:
+                        x = x1-i
+                    if y2 > y1:
+                        y = y1+i
+                    else:
+                        y = y1-i
+                    temp = cords.append((x, y))
+            #koniec dodatku
         return cords
 
 class OceanMap:
