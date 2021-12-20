@@ -52,13 +52,21 @@ class OceanMap:
             result[cord[1]][cord[0]] += 1
             
         return result
+    
+    def get_more_than_two(self, output_map):
+        count = 0
+        for line in output_map:
+            for number in line:
+                if number >= 2:
+                    count += 1
+        return count
 
 
 with open('Day5/input.txt', 'r') as f:
     lines = [line for line in f.readlines() if line != "\n"]
-    result = OceanMap(lines).create_map(VentLines(lines).get_points_of_line())
-    for line in result:
-        print(line)
+    output_map = OceanMap(lines).create_map(VentLines(lines).get_points_of_line())
+    result = OceanMap(lines).get_more_than_two(output_map)
+    print(result)
 
 
 
